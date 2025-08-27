@@ -11,9 +11,19 @@ builder.Services.AddDbContext<AppDb>(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserRepeository, UserRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentRepository>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
 builder.Services.AddScoped<IUserService,UserService>();
-builder.Services.AddScoped<IStudentRepository, StudentRepository >();
 builder.Services.AddScoped<IStudentService,StudentService >();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

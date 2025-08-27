@@ -13,7 +13,10 @@ namespace SchoolManagment.Repositories
         }
         public async Task<List<Students>> GetStudents()
         {
-            return await _appDb.Students.ToListAsync();
+            return await _appDb.Students
+                .Include(s=>s.User)
+                .ToListAsync();
+
             
         }
         public async Task<Students>GetStudentById(int id)
@@ -35,6 +38,7 @@ namespace SchoolManagment.Repositories
             }
             student.UserId = students.UserId;
             student.EnrollmentDate = students.EnrollmentDate;
+            student.StudentName = students.StudentName;
             return student;
         }
         public async Task<bool>DeleteStudent(int id)

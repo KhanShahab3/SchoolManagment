@@ -1,0 +1,13 @@
+﻿using SchoolManagment.Models;
+
+namespace SchoolManagment.Repositories
+{
+    public interface ICourseRepository
+    {
+        Task<List<Courses>> GetCourses();
+        Task<Courses> GetCourseById(int id);
+        Task<Courses> AddCourse(Courses course);
+        Task<Courses> UpdateCourse(Courses course);
+        Task<bool> DeleteCourse(int id);
+    }
+}
