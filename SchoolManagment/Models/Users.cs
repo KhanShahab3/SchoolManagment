@@ -1,4 +1,6 @@
-﻿namespace SchoolManagment.Models
+﻿using System.Text.Json.Serialization;
+
+namespace SchoolManagment.Models
 {
     public class Users
     {
@@ -7,10 +9,11 @@
         public string Name { get; set; }
         public string  Email { get; set; }
         public string Role { get; set; }
-        public string Password { get; set; }  
-        
-        Teachers? Teacher { get; set; }
-        Students? Student { get; set; }
+        public string Password { get; set; }
+        [JsonIgnore]
+       public  Teachers? Teacher { get; set; }
+        [JsonIgnore]
+        public  Students? Student { get; set; }
 
 
     }

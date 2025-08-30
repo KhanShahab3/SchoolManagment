@@ -23,10 +23,20 @@ namespace SchoolManagment.Repositories
             return user;
         }
         public async Task<Users> AddUsers(Users users)
+
         {
-             _appDb.Users.Add(users);
+            var user = new Users
+            {
+                Name = users.Name,
+                Email = users.Email,
+                Role = users.Role,
+                Password = users.Password
+
+            };
+           _appDb.Users.Add(users);
             await _appDb.SaveChangesAsync();
             return users;
+
         }
         public async Task<Users> UpdateUsers(Users users)
         {

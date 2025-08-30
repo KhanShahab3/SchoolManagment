@@ -1,10 +1,13 @@
-﻿namespace SchoolManagment.Models
+﻿using System.Text.Json.Serialization;
+
+namespace SchoolManagment.Models
 {
     public class Students
     {
         public int Id { get; set; }
         public int UserId { get; set; }
         public string StudentName {  get; set; }
+        [JsonIgnore]
         public Users? User { get; set; }
         public DateTime EnrollmentDate { get; set; }
     }

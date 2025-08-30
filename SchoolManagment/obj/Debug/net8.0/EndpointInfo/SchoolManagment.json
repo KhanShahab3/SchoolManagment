@@ -681,9 +681,6 @@
             "type": "string",
             "nullable": true
           },
-          "user": {
-            "$ref": "#/components/schemas/Users"
-          },
           "enrollmentDate": {
             "type": "string",
             "format": "date-time"
@@ -705,9 +702,6 @@
           "userId": {
             "type": "integer",
             "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/Users"
           },
           "hireDate": {
             "type": "string",
