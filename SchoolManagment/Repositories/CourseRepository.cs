@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolManagment.AppDbContext;
 using SchoolManagment.Models;
+using SchoolManagment.Models.ModelsDTO;
 
 namespace SchoolManagment.Repositories
 {
@@ -11,9 +12,19 @@ namespace SchoolManagment.Repositories
         {
             _context = context;
         }
-        public async Task<List<Courses>> GetCourses()
+        public async Task<List<CourseGetDTO>> GetCourses()
         {
-            return await _context.Courses.ToListAsync();
+            return await _context.Courses.
+            Select(c=>new CourseGetDTO
+            {
+               Id=c.Id,
+               Tittle= c.Tittle,
+               Credits= c.Credits,
+                TeacherId = c.TeacherId,
+               TeacherName= c.Teacher.TeacherName,
+
+            }).
+            ToListAsync();
         }
         public async Task<Courses> GetCourseById(int id)
         {

@@ -641,6 +641,13 @@
           "credits": {
             "type": "integer",
             "format": "int32"
+          },
+          "teacherId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "teacher": {
+            "$ref": "#/components/schemas/Teachers"
           }
         },
         "additionalProperties": false

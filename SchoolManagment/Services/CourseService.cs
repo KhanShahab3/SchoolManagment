@@ -1,4 +1,5 @@
 ﻿using SchoolManagment.Models;
+using SchoolManagment.Models.ModelsDTO;
 using SchoolManagment.Repositories;
 
 namespace SchoolManagment.Services
@@ -10,12 +11,12 @@ namespace SchoolManagment.Services
         {
             _coursesRepository = coursesRepository;
         }
-        public async Task<List<Courses>> GetAllCourses()
+        public async Task<List<CourseGetDTO>> GetAllCourses()
         {
             var courses= await _coursesRepository.GetCourses();
             if(courses==null||courses.Count==0)
             {
-                return new List<Courses>();
+                return new List<CourseGetDTO>();
             }
             return courses;
         }

@@ -1,10 +1,11 @@
 ﻿using SchoolManagment.Models;
+using SchoolManagment.Models.ModelsDTO;
 
 namespace SchoolManagment.Repositories
 {
     public interface ICourseRepository
     {
-        Task<List<Courses>> GetCourses();
+        Task<List<CourseGetDTO>> GetCourses();
         Task<Courses> GetCourseById(int id);
         Task<Courses> AddCourse(Courses course);
         Task<Courses> UpdateCourse(Courses course);
