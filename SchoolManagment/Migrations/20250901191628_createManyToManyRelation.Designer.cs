@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagment.AppDbContext;
 
@@ -11,9 +12,11 @@ using SchoolManagment.AppDbContext;
 namespace SchoolManagment.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20250901191628_createManyToManyRelation")]
+    partial class createManyToManyRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,6 +61,9 @@ namespace SchoolManagment.Migrations
                     b.Property<int>("CourseID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CoursesId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Grade")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
@@ -65,11 +71,14 @@ namespace SchoolManagment.Migrations
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("StudentsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseID");
+                    b.HasIndex("CoursesId");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentsId");
 
                     b.ToTable("Enrollments");
                 });
@@ -168,21 +177,13 @@ namespace SchoolManagment.Migrations
 
             modelBuilder.Entity("SchoolManagment.Models.Enrollments", b =>
                 {
-                    b.HasOne("SchoolManagment.Models.Courses", "Course")
+                    b.HasOne("SchoolManagment.Models.Courses", null)
                         .WithMany("Enrollments")
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CoursesId");
 
-                    b.HasOne("SchoolManagment.Models.Students", "Student")
+                    b.HasOne("SchoolManagment.Models.Students", null)
                         .WithMany("Enrollments")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Student");
+                        .HasForeignKey("StudentsId");
                 });
 
             modelBuilder.Entity("SchoolManagment.Models.Students", b =>

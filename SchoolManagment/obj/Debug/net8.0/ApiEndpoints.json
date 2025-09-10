@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "SchoolManagment.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "auth",
+        "Type": "SchoolManagment.Models.ModelsDTO.Auth",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SchoolManagment.Controllers.CourseController",
     "Method": "GetAllCourses",
     "RelativePath": "api/Course",
@@ -74,6 +90,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SchoolManagment.Controllers.CourseController",
+    "Method": "GetCoursesByTeacherId",
+    "RelativePath": "api/Course/teacher/{teacherId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teacherId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SchoolManagment.Controllers.EnrollmentController",
     "Method": "GetAllEnrollments",
     "RelativePath": "api/Enrollment",
@@ -141,6 +173,22 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SchoolManagment.Controllers.EnrollmentController",
+    "Method": "GetEnrollmentsByCourseId",
+    "RelativePath": "api/Enrollment/course/{courseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courseId",
         "Type": "System.Int32",
         "IsRequired": true
       }

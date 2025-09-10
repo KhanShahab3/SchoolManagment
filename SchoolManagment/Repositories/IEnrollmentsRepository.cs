@@ -9,5 +9,6 @@ namespace SchoolManagment.Repositories
         Task<Enrollments>AddEnrollment(Enrollments enrollment);
         Task<Enrollments>UpdateEnrollment(Enrollments enrollment);
         Task<bool>DeleteEnrollment(int id);
+        Task<List<Enrollments>> GetEnrollmentsByCourseId(int courseId);
     }
 }

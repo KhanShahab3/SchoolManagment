@@ -13,7 +13,10 @@ namespace SchoolManagment.Repositories
         }
         public async Task<List<Enrollments>> GetAllEnrollments()
         {
-            var enrollments = await _appDb.Enrollments.ToListAsync();
+            var enrollments = await _appDb.Enrollments.
+                Include(s=>s.Student).
+
+                ToListAsync();
             return enrollments;
         }
 
@@ -53,5 +56,16 @@ namespace SchoolManagment.Repositories
             await _appDb.SaveChangesAsync();
             return true;
         }
+
+        public async Task<List<Enrollments>> GetEnrollmentsByCourseId(int courseId)
+        {
+            var enrollments=await _appDb.Enrollments.
+                Where(e=>e.CourseID==courseId).
+                Include(s=>s.Student).
+                ToListAsync();
+            return enrollments;
+        }
+
+
     }
 }

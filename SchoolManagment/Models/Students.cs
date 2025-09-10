@@ -10,5 +10,6 @@ namespace SchoolManagment.Models
         [JsonIgnore]
         public Users? User { get; set; }
         public DateTime EnrollmentDate { get; set; }
+        public List<Enrollments> Enrollments { get; set; }
     }
 }

@@ -64,5 +64,15 @@ namespace SchoolManagment.Controllers
             }
             return Ok(true);
         }
+        [HttpGet("course/{courseId}")]
+        public async Task<IActionResult> GetEnrollmentsByCourseId(int courseId)
+        {
+            var enrollments = await _enrollmentService.GetEnrollmentsByCourse(courseId);
+            if (enrollments.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(enrollments);
+        }
     }
 }

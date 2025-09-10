@@ -9,8 +9,9 @@ namespace SchoolManagment.Models
         public string Tittle { get; set; }
         public int Credits { get; set; }  
         public int TeacherId { get; set; }
-      
+        
         public Teachers ?Teacher { get; set; }
+        public List<Enrollments>? Enrollments { get; set; } 
     }
 }
 //{

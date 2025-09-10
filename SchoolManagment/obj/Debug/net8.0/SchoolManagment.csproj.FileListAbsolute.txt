@@ -170,3 +170,4 @@ D:\SchoolManagment\SchoolManagment\obj\Debug\net8.0\refint\SchoolManagment.dll
 D:\SchoolManagment\SchoolManagment\obj\Debug\net8.0\SchoolManagment.pdb
 D:\SchoolManagment\SchoolManagment\obj\Debug\net8.0\SchoolManagment.genruntimeconfig.cache
 D:\SchoolManagment\SchoolManagment\obj\Debug\net8.0\ref\SchoolManagment.dll
+D:\SchoolManagment\SchoolManagment\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

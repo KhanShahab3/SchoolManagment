@@ -46,5 +46,17 @@ namespace SchoolManagment.Services
             }
             return false;
         }
+
+        public async Task<List<Courses>> GetCoursesByTeacher(int teacherId)
+        {
+            var courses = await _coursesRepository.GetCoursesByTeacherId(teacherId);
+            if(courses==null||courses.Count==0)
+            {
+                return new List<Courses>();
+            }
+            return courses;
+        }
+
+    
     }
 }

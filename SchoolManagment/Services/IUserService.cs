@@ -9,6 +9,7 @@ namespace SchoolManagment.Services
         Task<Users> AddUser(Users users);
         Task<Users> UpdateUser(Users users);
         Task<bool> DeleteUser(int id);
+      
 
     }
 }

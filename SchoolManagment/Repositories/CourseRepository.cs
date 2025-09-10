@@ -26,6 +26,15 @@ namespace SchoolManagment.Repositories
             }).
             ToListAsync();
         }
+        public async Task<List<Courses>> GetCoursesByTeacherId(int teacherId)
+        {
+            return await _context.Courses.Where(c => c.TeacherId == teacherId).
+                Include(c => c.Enrollments).
+                ThenInclude(Enrollments => Enrollments.Student).
+                 
+
+                ToListAsync();
+        }   
         public async Task<Courses> GetCourseById(int id)
         {
             return await _context.Courses.FindAsync(id);

@@ -45,5 +45,14 @@ namespace SchoolManagment.Services
             }
             return false;
         }
+        public async Task<List<Enrollments>> GetEnrollmentsByCourse(int courseId)
+        {
+            var enrollments = await _enrollmentsRepository.GetEnrollmentsByCourseId(courseId);
+            if(enrollments==null||enrollments.Count==0)
+            {
+                return new List<Enrollments>();
+            }
+            return enrollments;
+        }
     }
 }

@@ -4,7 +4,7 @@ using SchoolManagment.Models;
 
 namespace SchoolManagment.Repositories
 {
-    public class UserRepository:IUserRepeository
+    public class UserRepository:IUserRepository
     {
         private readonly AppDb _appDb;
         public UserRepository(AppDb appDb)
@@ -62,6 +62,13 @@ namespace SchoolManagment.Repositories
             _appDb.Users.Remove(user);
             await _appDb.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Users>GetUserByEmail(string email)
+        {
+            var user =  await _appDb.Users.FirstOrDefaultAsync(x => x.Email == email);
+                
+            return user;
         }
     }
 }

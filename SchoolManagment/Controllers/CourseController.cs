@@ -64,5 +64,16 @@ namespace SchoolManagment.Controllers
             }
             return Ok(true);
         }
+
+        [HttpGet("teacher/{teacherId}")]
+        public async Task<IActionResult> GetCoursesByTeacherId(int teacherId)
+        {
+            var courses = await _courseService.GetCoursesByTeacher(teacherId);
+            if (courses.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(courses);
+        }
     }
 }

@@ -7,6 +7,7 @@ namespace SchoolManagment.Services
     {
         Task<List<CourseGetDTO>> GetAllCourses();
         Task<Courses> GetCourse(int id);
+        Task<List<Courses>>GetCoursesByTeacher(int teacherId);
         Task<Courses> AddCourse(Courses course);
         Task<Courses> UpdateCourse(Courses course);
         Task<bool> DeleteCourse(int id);

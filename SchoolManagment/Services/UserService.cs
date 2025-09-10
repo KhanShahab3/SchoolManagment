@@ -1,18 +1,28 @@
-﻿using SchoolManagment.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using SchoolManagment.Models;
 using SchoolManagment.Repositories;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace SchoolManagment.Services
 {
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
-        private readonly IUserRepeository _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IStudentRepository _studentRepository;
         private readonly ITeacherRepository _teacherRepository;
-        public UserService(IUserRepeository userRepository,IStudentRepository studentRepository,ITeacherRepository teacherRepository)
+        private readonly IConfiguration _configuration;
+        public UserService(IUserRepository userRepository,
+            IStudentRepository studentRepository,
+            ITeacherRepository teacherRepository,
+            IConfiguration configuration
+            )
         {
             _userRepository = userRepository;
             _studentRepository = studentRepository;
             _teacherRepository = teacherRepository;
+            _configuration = configuration;
         }
         public async Task<List<Users>> GetAllUsers()
         {
@@ -24,8 +34,8 @@ namespace SchoolManagment.Services
         }
         public async Task<Users> AddUser(Users users)
         {
-            var createdUser= await _userRepository.AddUsers(users);
-            if(createdUser!=null && createdUser.Role=="Student")
+            var createdUser = await _userRepository.AddUsers(users);
+            if (createdUser != null && createdUser.Role == "Student")
             {
                 var student = new Students
                 {
@@ -34,24 +44,24 @@ namespace SchoolManagment.Services
                     EnrollmentDate = DateTime.Now
 
                 };
-               await _studentRepository.AddStudent(student);
-              
+                await _studentRepository.AddStudent(student);
+
             }
-            else if(createdUser!=null && createdUser.Role=="Teacher")
+            else if (createdUser != null && createdUser.Role == "Teacher")
             {
-               
-                 var teacher = new Teachers
-                 {
-                     UserId = createdUser.Id,
-                     TeacherName = createdUser.Name,
-                     HireDate = DateTime.Now
-                 };
+
+                var teacher = new Teachers
+                {
+                    UserId = createdUser.Id,
+                    TeacherName = createdUser.Name,
+                    HireDate = DateTime.Now
+                };
                 await _teacherRepository.AddTeacher(teacher);
             }
-        
-          
-                return createdUser;
-        
+
+
+            return createdUser;
+
 
         }
         public async Task<Users> UpdateUser(Users users)
@@ -62,5 +72,8 @@ namespace SchoolManagment.Services
         {
             return await _userRepository.DeleteUser(id);
         }
+
+       
     }
+
 }
